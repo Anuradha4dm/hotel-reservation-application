@@ -1,22 +1,31 @@
-<%- include('../includes/head.ejs') %>
+<?php
+
+include('../includes/head.php');
+
+?>
 <link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
-    <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <% if (prods.length > 0) { %>
+
+        <?php
+
+        include('../includes/navigation.php');
+
+        ?>
+
         <div class="grid">
-            <% for (let product of prods) { %>
+
             <article class="card product-item">
                 <header class="card__header">
                     <h1 class="product__title">
-                        <%= product.title %>
+
                     </h1>
                 </header>
                 <div class="card__image">
-                    <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                    <img src="" alt="">
                 </div>
                 <div class="card__content">
                     <h2 class="product__price">$
@@ -27,7 +36,7 @@
                     </p>
                 </div>
                 <div class="card__actions">
-                    <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit</a>
+                    <a href="/admin/edit-product/" class="btn">Edit</a>
                     <form action="/admin/delete-product" method="POST">
                         <input type="hidden" value="<%= product._id %>" name="productId">
                         <button class="btn" type="submit">Delete</button>
@@ -35,10 +44,12 @@
 
                 </div>
             </article>
-            <% } %>
+
         </div>
-        <% } else { %>
+
         <h1>No Products Found!</h1>
-        <% } %>
+
     </main>
-    <%- include('../includes/end.ejs') %>
+</body>
+
+</html>
