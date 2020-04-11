@@ -30,7 +30,7 @@ include('../includes/head.php');
             </div>
             <div class="form-control">
                 <label for="address">Address</label>
-                <input type="text" name="assress" id="address" >
+                <input type="text" name="address" id="address" >
             </div>
             <div class="form-control">
                 <label for="contact-number">Contact Number</label>
@@ -48,6 +48,11 @@ include('../includes/head.php');
 
                 </select>
 
+            </div>
+
+            <div class="form-control">
+                <label for="quatity">Number of rooms</label>
+                <input type="number" name="quatity" id="quatity" step="0.01">
             </div>
 
             <div class="form-control">

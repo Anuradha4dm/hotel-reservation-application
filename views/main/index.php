@@ -29,13 +29,13 @@ include('../includes/head.php')
 
                     </div>
                     <div class="card__content">
-                        <h2 class="product__price"><?php echo $row['price'] ?></h2>
+                       
                         <p class="product__description"><?php echo $row['description'] ?></p>
                     </div>
                     <form action="./details.php"  method="GET">
                         <div class="card__actions">
                             <input type="hidden" name="id" value=".<?php echo $row['idhotel'] ?>.">
-                            <button class="btn" type="submit" name="submit" >SUBMIT</button>
+                            <button class="btn" type="submit" name="submit" >DETAILS</button>
                         </div>
 
                     </form>

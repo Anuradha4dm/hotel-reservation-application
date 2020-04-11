@@ -1,42 +1,69 @@
 <?php
 
-    include('./connection.php');
+include('./connection.php');
 
 
-if(isset($_POST['submit'])){
-    
-    $name=$_POST['name'];
-    $address=$_POST['address'];
-    $contactNumber=$_POST['contact-number'];
-    $roomType=$_POST['room-type'];
-    $price=$_POST['price'];
-    $description=$_POST['description'];
 
-    $fileTMP=$_FILES['imageUrl']['tmp_name'];
+if (isset($_POST['submit'])) {
 
-    $saveImage=addslashes(file_get_contents($fileTMP));
-    
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $contactNumber = $_POST['contact-number'];
+    $roomType = $_POST['room-type'];
+    $price = $_POST['price'];
+    $description = $_POST['description'];
+    $quatity = $_POST['quatity'];
+
+    $fileTMP = $_FILES['imageUrl']['tmp_name'];
+
+    $saveImage = addslashes(file_get_contents($fileTMP));
 }
 
-    $sql="insert into hotel(hotelName,imageUrl,address,contactNumber,roomType,price,description) values('$name','$saveImage','$address','$contactNumber','$roomType','$price','$description')";
+#add new hotel into the hotel table
+$sql = "insert into hotel(hotelName,imageUrl,address,contactNumber,description) values('$name','$saveImage','$address','$contactNumber','$description')";
+$result = mysqli_query($conn, $sql);
 
-    $result=mysqli_query($conn,$sql);
+getError($result, 'New hotel is added');
 
-    if($result){
+#get the inserted hotel's id hotel
+
+$sql = "select idhotel from hotel where hotelName='$name'";
+$result = mysqli_query($conn, $sql);
+
+$re = mysqli_num_rows($result);
+
+
+
+if (mysqli_num_rows($result) == 1) {
+
+    $row = mysqli_fetch_assoc($result);
+    $id = $row['idhotel'];
+
+
+    $sql = "insert into applicationDB.hotel_availability(quantity,room_type,hotel_id,price) values('$quatity','$roomType','$id','$price')";
+    $result = mysqli_query($conn, $sql);
+
+    print_r($result, 'Insert Hotel available table');
+} else {
+
+    echo "<script>";
+    echo "console.log('errrrr');";
+    echo "</script>";
+}
+
+
+function getError($result, $msg)
+{
+    global $conn;
+
+    if ($result) {
 
         echo "<script>";
-        echo "console.log('hetel is save ......');";
+        echo "console.log('$msg');";
         echo "</script>";
 
         header("location: /views/main/index.php");
-
-
-        
-    
-    }else{
-        die("connection faild ".mysqli_error($conn));
-    
+    } else {
+        die("connection faild " . mysqli_error($conn));
     }
-
-    mysqli_close($conn);
-?>
+}

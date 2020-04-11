@@ -4,44 +4,41 @@
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
             <li class="main-header__item">
-                <a class="" href="/">Home</a>
+                <a class="" href="/views/main/index.php">Home</a>
             </li>
             <li class="main-header__item">
-                <a class="" href="/products">Hotels</a>
+                <a class="" href="/views/main/index.php">Hotels</a>
             </li>
-            
+            <li class="main-header__item">
+                <a class="" href="/cart">Drivers</a>
+            </li>
+            <li class="main-header__item">
+                <a class="" href="/orders">My Favourites</a>
+            </li>
 
-                <li class="main-header__item">
-                    <a class="" href="/cart">Drivers</a>
-                </li>
-                <li class="main-header__item">
-                    <a class="" href="/orders">My Favourites</a>
-                </li>
-               
-             
-          
-            
+
+
+
         </ul>
         <ul class="main-header__item-list">
-           
-                <li class="main-header__item">
-                    <a href="/log-in">Log in</a>
-                </li>
-                <li class="main-header__item">
-                    <a class="" href="/signup">Signup</a>
-                </li>
-           
-           
+
+            <li class="main-header__item">
+                <a href="/log-in">Log in</a>
+            </li>
+            <li class="main-header__item">
+                <a class="" href="/signup">Signup</a>
+            </li>
+
+
 
             <li class="main-header__item">
                 <a href="/log-out">Log out</a>
             </li>
-            
-          
-            
-            
+
+
+
+
 
         </ul>
     </nav>
 </header>
-
