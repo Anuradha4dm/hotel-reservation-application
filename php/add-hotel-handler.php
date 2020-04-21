@@ -8,6 +8,7 @@ if (isset($_POST['submit'])) {
 
     $name = $_POST['name'];
     $address = $_POST['address'];
+    $email=$_POST['email'];
     $contactNumber = $_POST['contact-number'];
     $roomType = $_POST['room-type'];
     $price = $_POST['price'];
@@ -20,7 +21,7 @@ if (isset($_POST['submit'])) {
 }
 
 #add new hotel into the hotel table
-$sql = "insert into hotel(hotelName,imageUrl,address,contactNumber,description) values('$name','$saveImage','$address','$contactNumber','$description')";
+$sql = "insert into hotel(hotelName,imageUrl,address,contactNumber,description,email) values('$name','$saveImage','$address','$contactNumber','$description','$email')";
 $result = mysqli_query($conn, $sql);
 
 getError($result, 'New hotel is added');
@@ -62,7 +63,7 @@ function getError($result, $msg)
         echo "console.log('$msg');";
         echo "</script>";
 
-        header("location: /views/main/index.php");
+        header("location: /");
     } else {
         die("connection faild " . mysqli_error($conn));
     }

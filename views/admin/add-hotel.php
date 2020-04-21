@@ -16,60 +16,70 @@ include('../includes/head.php');
     include('../../php/connection.php');
     ?>
 
-
-
-    <main>
-        <form class="hotel-add-form" action="../../php/add-hotel-handler.php" method="POST" enctype="multipart/form-data" >
-            <div class="form-control">
-                <label for="name">Hotel Name</label>
-                <input type="text" name="name" id="name" >
+    <div class="container  mb-5">
+        <form class="form-group" action="../../php/add-hotel-handler.php" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="emal">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
             </div>
-            <div class="form-control">
-                <label for="imageUrl">Image Url</label>
-                <input class="btn" type="file" name="imageUrl" id="imageUrl" >
+
+            <div>
+                <label for="hotelname">Hotel Name</label>
+                <input type="text" class="form-control" id="hotelname" name="name">
             </div>
-            <div class="form-control">
+
+            <div>
                 <label for="address">Address</label>
-                <input type="text" name="address" id="address" >
+                <input type="text" class="form-control" id="address" name="address">
             </div>
-            <div class="form-control">
-                <label for="contact-number">Contact Number</label>
-                <input type="text" name="contact-number" id="contact-number" >
-            </div>          
 
-            <div class="form-control">
-                <label  for="room-type">Room Type</label>
-                <select class="room-type" name="room-type" id="">
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" class="form-control-file" id="image" name="imageUrl">
+            </div>
 
+            <div class="form-group">
+                <label for="type">Example select</label>
+                <select class="form-control" id="type" name="room-type">
                     <option value="single">Single</option>
                     <option value="double">Double</option>
                     <option value="triple">Triple</option>
                     <option value="quad">Quad</option>
 
                 </select>
-
+            </div>
+            <div class="form-group">
+                <label for="qty">number of rooms</label>
+                <input type="number" class="form-control-file" id="qty" name="quatity">
             </div>
 
-            <div class="form-control">
-                <label for="quatity">Number of rooms</label>
-                <input type="number" name="quatity" id="quatity" step="0.01">
+            <div class="form-group">
+                <label for="price">Price Of Each</label>
+                <input type="number" class="form-control-file" id="price" name="price" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="number" class="form-control-file" id="contact" name="contact-number">
             </div>
 
-            <div class="form-control">
-                <label for="price">Price Per Each</label>
-                <input type="number" name="price" id="price" step="0.01">
-            </div>
-            <div class="form-control">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" rows="5"></textarea>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Some Comment</label>
+                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
-            <input type="hidden" value="<%= product._id %>" name="productId">
-
-
-            <button class="btn" type="submit" name="submit">submit</button>
+            <div class="form-group">
+            <button class="btn btn-success" type="submit" name="submit">submit</button>
+            </div>
         </form>
-    </main>
+
+
+
+
+    </div>
+
+
+
+   
 
 </body>
 

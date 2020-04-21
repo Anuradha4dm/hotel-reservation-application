@@ -26,10 +26,10 @@ if ($conn) {
 
 if(isset($_GET['submit'])){
 
-    $id=$_GET['id'];
+    $getId=$_GET['hotelId'];
 }
 
-$getId= explode('.',$id)[1] ;
+
 
 
 //class which get the hotel_available table 
