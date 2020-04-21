@@ -25,8 +25,10 @@ if ($password != $conformPassword) {
     header("location: /");
     exit();
 } else {
-
+    $password = str_replace(' ', '', $password);
+    
     $password = md5($password);
+    
 }
 
 

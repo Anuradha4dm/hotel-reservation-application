@@ -12,6 +12,15 @@ include('./views/includes/head.php');
     include('./views/includes/navigation.php');
     include('./php/get-hotel-handler.php');
 
+    if ($msg=$_GET['msg']) {
+       
+        if($msg=="notlogin"){
+            echo '<div class="alert alert-danger" role="alert">';
+            echo '<h4>You Need To Log In</h4>';
+            echo '</div>';
+        }
+    }
+
     ?>
 
 
@@ -37,14 +46,44 @@ include('./views/includes/head.php');
                             </div>
 
                         </form>
+                        <?php
+                        if ($_SESSION['isLogin'] && $_SESSION['normalUser']) {
 
-                        <form action="" method="GET">
-                            <div class="card-body">
-                            <input type="hidden" name="hotelId" value="<?php echo $row['idhotel'] ?>">
-                                <button type="submit" class="btn btn-success">Add To My Favoutite</button>
-                            </div>
+                            echo '<form action="/php/user/add-favourite.php" method="POST">';
+                            echo '<div class="card-body">';
+                                echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                                echo '<input type="hidden" name="userId" value="' . $_SESSION['userID'] . '">';
+                                echo '<button type="submit" name="add" class="btn btn-success">Make Booking</button>';
+                            echo '</div>';
 
-                        </form>
+                        echo '</form>';
+
+
+                            echo '<form action="/php/user/add-favourite.php" method="POST">';
+                                echo '<div class="card-body">';
+                                    echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                                    echo '<input type="hidden" name="userId" value="' . $_SESSION['userID'] . '">';
+                                    echo '<button type="submit" name="add" class="btn btn-warning">Add To My Favoutite</button>';
+                                echo '</div>';
+
+                            echo '</form>';
+                        }
+
+                        if($_SESSION['isLogin'] && $_SESSION['hotelUser']){
+                            
+                            echo '<form action="" method="GET">';
+                                echo '<div class="card-body">';
+                                    echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                                    echo '<button type="submit" class="btn btn-success">Add New Room</button>';
+                                echo '</div>';
+
+                            echo '</form>';
+                        }
+
+                        
+
+                        ?>
+
 
                     </div>
 

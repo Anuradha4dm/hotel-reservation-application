@@ -12,25 +12,67 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Hotels</a>
             </li>
+            <?php
 
-            <li class="nav-item">
-                <a class="nav-link " href="/views/admin/add-hotel.php">Add Hotel</a>
-            </li>
+
+
+            if ($_SESSION['isLogin'] && $_SESSION['hotelUser']) {
+
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link " href="/views/admin/add-hotel.php">Add Hotel</a>';
+                echo  '</li>';
+
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link " href="/views/admin/add-hotel.php">Add Room</a>';
+                echo  '</li>';
+            }
+
+            if ($_SESSION['isLogin'] && $_SESSION['normalUser']) {
+
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link " href="/views/main/my-favourite.php" >My Faourite</a>';
+                echo  '</li>';
+
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link " href="/views/admin/add-hotel.php">Bookings</a>';
+                echo  '</li>';
+            }
+
+
+            ?>
+
         </ul>
 
-        <ul class="nav-item main-header__item-list">
+        <?php
+        
+        echo '  <ul class="nav-item main-header__item-list">';
+        if (!$_SESSION['isLogin']) {
+            echo ' <li class="nav-item  main-header__item">';
+            echo    '<a href="/views/authentication/login.php">Log in</a>';
+            echo '</li>';
 
-        <li class="nav-item  main-header__item">
-            <a href="/views/authentication/login.php">Log in</a>
-        </li>
-        <li class="nav-item main-header__item">
-            <a class="" href="/views/authentication/signup.php">Signup</a>
-        </li>
 
-        <li class="nav-item main-header__item">
-            <a href="/log-out">Log out</a>
-        </li>
-    </ul>
+
+            echo  '<li class="nav-item main-header__item">';
+            echo  '<a class="" href="/views/authentication/signup.php">Signup</a>';
+            echo '</li>';
+        }
+
+        if ($_SESSION['isLogin']) {
+            echo '<li class="nav-item main-header__item">';
+            echo '<a href="/php/log-out-handler.php">Log out</a>';
+            echo  '</li>';
+        }
+
+        echo '</ul>';
+
+        ?>
+
+
+
+
+
+
 
 
         <form class="form-inline my-2 my-lg-0">
@@ -42,5 +84,5 @@
 
 
 
-    
+
 </nav>
