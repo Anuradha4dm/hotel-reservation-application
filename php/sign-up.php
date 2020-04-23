@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
 
 if ($password != $conformPassword) {
 
-    header("location: /");
+    header("location: /views/authentication/signup.php?msg=passerr");
     exit();
 } else {
     $password = str_replace(' ', '', $password);
@@ -31,13 +31,26 @@ if ($password != $conformPassword) {
     
 }
 
+$sql="select * from user where username='$username'";
+print_r($sql);
+
+$result=mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+   header("location: /views/authentication/signup.php?msg=userexist");
+   
+    exit();
+
+}
+
+
 
 $sql = "insert into user(username,password,hoteluser,normaluser) values('$username','$password'," . $hotelUser . "," . $normalUser . ")";
 
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-    header("location: /views/authentication/login.php");
+    header("location: /views/admin/admin-panel.php");
 } else {
     die('error occur' . mysqli_error($conn));
 }

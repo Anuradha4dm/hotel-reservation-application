@@ -1,9 +1,9 @@
 <?php
 
-$servername='localhost';
-$username='root';
-$password='damith123';
-$database='applicationDB';
+$servername='';
+$username='';
+$password='';
+$database='';
 
 
 

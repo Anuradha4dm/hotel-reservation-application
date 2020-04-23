@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('./connection.php');
 
 
@@ -19,9 +19,12 @@ if (isset($_POST['submit'])) {
 
     $saveImage = addslashes(file_get_contents($fileTMP));
 }
+$userId=(int)($_SESSION['userID']);
+
+
 
 #add new hotel into the hotel table
-$sql = "insert into hotel(hotelName,imageUrl,address,contactNumber,description,email) values('$name','$saveImage','$address','$contactNumber','$description','$email')";
+$sql = "insert into hotel(hotelName,imageUrl,address,contactNumber,description,email,userid) values('$name','$saveImage','$address','$contactNumber','$description','$email',".$userId.")";
 $result = mysqli_query($conn, $sql);
 
 getError($result, 'New hotel is added');
@@ -41,7 +44,7 @@ if (mysqli_num_rows($result) == 1) {
     $id = $row['idhotel'];
 
 
-    $sql = "insert into applicationDB.hotel_availability(quantity,room_type,hotel_id,price) values('$quatity','$roomType','$id','$price')";
+    $sql = "insert into hotel_availability(quantity,room_type,hotel_id,price,userid) values('$quatity','$roomType','$id','$price',".$userId.")";
     $result = mysqli_query($conn, $sql);
 
     print_r($result, 'Insert Hotel available table');

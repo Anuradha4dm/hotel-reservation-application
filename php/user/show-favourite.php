@@ -1,10 +1,9 @@
 <?php
 
-
-$servername = 'localhost';
-$username = 'root';
-$password = 'damith123';
-$database = 'applicationDB';
+$servername='localhost';
+$username='root';
+$password='damith123';
+$database='applicationDB';
 
 
 
@@ -45,7 +44,7 @@ if ($_SESSION['isLogin']) {
     $hotelNum = array();
     $favourite=array();
 
-    $sql = "SELECT hotelid FROM applicationDB.cart WHERE userid='$userId'";
+    $sql = "SELECT hotelid FROM cart WHERE userid='$userId'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -57,7 +56,7 @@ if ($_SESSION['isLogin']) {
     }
 
     foreach ($hotelNum as $item) {
-        $sql = "SELECT * FROM applicationDB.hotel WHERE idhotel='$item'";
+        $sql = "SELECT * FROM hotel WHERE idhotel='$item'";
 
         $result = mysqli_query($conn, $sql);
 

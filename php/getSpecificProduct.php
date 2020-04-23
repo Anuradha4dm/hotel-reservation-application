@@ -1,32 +1,14 @@
 
 <?php
 
-$servername = 'localhost';
-$username = 'root';
-$password = 'damith123';
-$database = 'applicationDB';
-
-
-
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-if ($conn) {
-
-    echo "<script>";
-    echo "console.log('connection success ......');";
-    echo "</script>";
-} else {
-
-    echo "<script>";
-    echo "console.log('connectin loss ......');";
-    echo "</script>";
-
-    die("connection faild " . mysqli_error($conn));
-}
-
-if(isset($_GET['submit'])){
+if(isset($_GET['hotelId'])){
 
     $getId=$_GET['hotelId'];
+}
+
+if(isset($_GET['msg'])){
+
+    header('location: /views/main/errorpage.php?msg='.$_GET['msg']);
 }
 
 
@@ -54,7 +36,7 @@ function getHotelDetails_1()
 {
     global $conn,$getId;
 
-    $sql = "SELECT * FROM applicationDB.hotel WHERE idhotel=$getId";
+    $sql = "SELECT * FROM hotel WHERE idhotel=$getId";
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result)==1){
@@ -62,7 +44,7 @@ function getHotelDetails_1()
         return $row=mysqli_fetch_assoc($result);
 
     }else{
-        die("error in sql statement");
+        die("error in sql statements".mysqli_error($result));
     }
 
           
@@ -79,7 +61,7 @@ function getHotelDetails_2()
     $hotelRooms=array();
 
 
-    $sql = "SELECT * FROM applicationDB.hotel_availability WHERE hotel_id=$getId";
+    $sql = "SELECT * FROM hotel_availability WHERE hotel_id=$getId";
     $result = mysqli_query($conn, $sql);
 
 
@@ -101,7 +83,8 @@ function getHotelDetails_2()
         return $hotelRooms;
 
     }else{
-        die("error in sql statement");
+       
+        header('location: /views/main/details.php?msg=noprofile');
     }
 
           
