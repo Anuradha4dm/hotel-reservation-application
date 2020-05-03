@@ -10,7 +10,7 @@ include('../../php/connection.php');
    <?php
 
    include('../includes/navigation.php');
-   include('../../php/getSpecificProduct.php');
+   include('../../php/admin/get-hotel-profile-user.php');
 
    $detailsOfHotel = getHotelDetails_1();
    $detailsOfAvailable = getHotelDetails_2();
@@ -20,15 +20,9 @@ include('../../php/connection.php');
    ?>
    <div class="container">
       <?php
+      $hotelid = $detailsOfHotel['idhotel'];
+
       if ($_SESSION['isLogin']) {
-
-         if(isset($_GET['msg'])){
-            echo '<div class="alert alert-danger" role="alert">';
-             echo 'This is a danger alert—check it out!';
-            echo '</div>';
-         }
-
-
          foreach ($detailsOfAvailable as $item) {
             echo "<div class='card' style='width: 18rem;'>";
             echo '<img class="card-img-top" src="data:image/jpeg;base64,' . base64_encode($detailsOfHotel['imageUrl']) . '"/>';
@@ -41,13 +35,24 @@ include('../../php/connection.php');
             echo  "<li class='list-group-item'>Room Type :" . $item->roomType . "</li>";
             echo  "<li class='list-group-item'>Available :" . $item->quantity . " rooms</li>";
             echo  "<li class='list-group-item'>Price :$" . $item->price . "</li>";
-            echo  "<li class='list-group-item'>Contact No :0" . $detailsOfHotel['contactNumber'] . "</li>";
-            echo  "<li class='list-group-item'>Contact No :0" . $detailsOfHotel['email'] . "</li>";
+            echo  "<li class='list-group-item'>Contact No :" . $detailsOfHotel['contactNumber'] . "</li>";
+            echo  "<li class='list-group-item'>Email :" . $detailsOfHotel['email'] . "</li>";
+
 
 
             echo "</ul>";
             echo "<div class='card-body'>";
-            echo "<a href='' class='card-link'>Add To My Favourit</a>";
+            if (isset($_GET['submit-delete'])) {
+               echo "<a href='/php/admin/delete.php?hotelid=$hotelid&tag=$item->availableid'     class='card-link'>Delete Now</a>";
+            }
+            if (isset($_GET['submit-add'])) {
+               echo "<a href='/php/admin/add-new-room.php?hotelid=$hotelid&tag=$item->availableid' class='card-link'>Add Now</a>";
+            }
+            if (isset($_GET['submit-edit'])) {
+               echo "<a href='/php/admin/add-new-room.php?hotelid=$hotelid&tag=$item->availableid' class='card-link'>Edit Now</a>";
+            }
+
+           
             echo "<a href='' class='card-link'>Edit</a>";
             echo "</div>";
             echo "</div>";

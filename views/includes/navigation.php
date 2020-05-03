@@ -23,7 +23,7 @@
                 echo  '</li>';
 
                 echo '<li class="nav-item">';
-                echo '<a class="nav-link " href="/views/admin/add-hotel.php">Add Room</a>';
+                echo '<a class="nav-link " href="/views/admin/admin-panel.php">Admin Hotel</a>';
                 echo  '</li>';
             }
 

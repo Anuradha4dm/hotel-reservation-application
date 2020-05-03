@@ -1,5 +1,7 @@
 <?php
+
 include('./views/includes/head.php');
+include('./php/connection.php');
 
 ?>
 
@@ -23,7 +25,16 @@ include('./views/includes/head.php');
 
     ?>
 
+    <script type="rext/javascript"  language="javascript" >
 
+    $(document).ready(()=>{
+
+        alert('message');
+
+    }) 
+
+    </script>
+    
 
     <main>
 
