@@ -51,7 +51,7 @@ include('../../php/connection.php');
                             echo '</form>';
                             echo '<form action="/views/admin/admin-hotel-profile.php" method="GET">';
                             echo '<div class="card-body">';
-                            echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                            echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                             echo '<button type="submit" name="submit-edit" class="submit btn btn-info">Edit Hotel Profile</button>';
                             echo '</div>';
 
@@ -60,15 +60,15 @@ include('../../php/connection.php');
                             echo '</form>';
                             echo '<form action="/views/admin/add-new-hotel-profile.php" method="GET">';
                             echo '<div class="card-body">';
-                            echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                            echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                             echo '<button type="submit"  name="submit-add" class="submit btn btn-success">Add New Hotel Profile</button>';
                             echo '</div>';
 
                             echo '</form>';
-
+                           
                             echo '<form action="/views/admin/admin-hotel-profile.php" method="GET">';
                             echo '<div class="card-body">';
-                            echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                            echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                             echo '<button type="submit" name="submit-delete" class="submit btn btn-danger">Delete Hotel Profile</button>';
                             echo '</div>';
                         }

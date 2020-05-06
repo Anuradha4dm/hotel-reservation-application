@@ -8,9 +8,7 @@ include('./connection.php');
         $email=$_POST['email'];
         $password=$_POST['password'];
         $remember=$_POST['remember'];
-
-      
-    
+   
 
     }
 
@@ -21,26 +19,17 @@ include('./connection.php');
 
     $row=mysqli_fetch_assoc($result);
 
-    
-
-
-
-    
+        
     if($remember=="remind"){
 
         setcookie("remember","$email",time()+3000,'/');
     }
        
-          
 
-    
-
-
-   
 
     if($row['password']==md5($password)){
         $_SESSION['isLogin']=true;
-        $_SESSION['userID']=$row['iduser'];
+        $_SESSION['userID']=$row['userid'];
 
         
 

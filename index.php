@@ -52,7 +52,7 @@ include('./php/connection.php');
                         </div>
                         <form action="/views/main/details.php" method="GET">
                             <div class="card-body">
-                                <input type="hidden" name="hotelId" value="<?php echo $row['idhotel'] ?>">
+                                <input type="hidden" name="hotelId" value="<?php echo $row['hotelid'] ?>">
                                 <button type="submit" name="submit" class="btn btn-primary">Details</button>
                             </div>
 
@@ -62,7 +62,7 @@ include('./php/connection.php');
 
                             echo '<form action="/php/user/add-favourite.php" method="POST">';
                             echo '<div class="card-body">';
-                                echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                                echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                                 echo '<input type="hidden" name="userId" value="' . $_SESSION['userID'] . '">';
                                 echo '<button type="submit" name="add" class="btn btn-success">Make Booking</button>';
                             echo '</div>';
@@ -72,7 +72,7 @@ include('./php/connection.php');
 
                             echo '<form action="/php/user/add-favourite.php" method="POST">';
                                 echo '<div class="card-body">';
-                                    echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                                    echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                                     echo '<input type="hidden" name="userId" value="' . $_SESSION['userID'] . '">';
                                     echo '<button type="submit" name="add" class="btn btn-warning">Add To My Favoutite</button>';
                                 echo '</div>';
@@ -84,7 +84,7 @@ include('./php/connection.php');
                             
                             echo '<form action="" method="GET">';
                                 echo '<div class="card-body">';
-                                    echo '<input type="hidden" name="hotelId" value="' . $row['idhotel'] . '">';
+                                    echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                                     echo '<button type="submit" class="btn btn-success">Add New Room</button>';
                                 echo '</div>';
 

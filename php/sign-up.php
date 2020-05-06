@@ -32,7 +32,7 @@ if ($password != $conformPassword) {
 }
 
 $sql="select * from user where username='$username'";
-print_r($sql);
+
 
 $result=mysqli_query($conn,$sql);
 

@@ -31,7 +31,7 @@ getError($result, 'New hotel is added');
 
 #get the inserted hotel's id hotel
 
-$sql = "select idhotel from hotel where hotelName='$name'";
+$sql = "select hotelid from hotel where hotelName='$name'";
 $result = mysqli_query($conn, $sql);
 
 $re = mysqli_num_rows($result);
@@ -41,10 +41,10 @@ $re = mysqli_num_rows($result);
 if (mysqli_num_rows($result) == 1) {
 
     $row = mysqli_fetch_assoc($result);
-    $id = $row['idhotel'];
+    $id = (int)$row['hotelid'];
 
 
-    $sql = "insert into hotel_availability(quantity,room_type,hotel_id,price,userid) values('$quatity','$roomType','$id','$price',".$userId.")";
+    $sql = "insert into hotel_availability(quantity,room_type,hotel_id,price,userid) values('$quatity','$roomType',".$id.",'$price',".$userId.")";
     $result = mysqli_query($conn, $sql);
 
     print_r($result, 'Insert Hotel available table');

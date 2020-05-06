@@ -41,7 +41,7 @@ include('../includes/head.php');
                         </div>
                         <form action="/views/main/details.php" method="GET">
                             <div class="card-body">
-                                <input type="hidden" name="hotelId" value="<?php echo $row['idhotel'] ?>">
+                                <input type="hidden" name="hotelId" value="<?php echo $row['hotelid'] ?>">
                                 <button type="submit" name="submit" class="btn btn-primary">Details</button>
                             </div>
 

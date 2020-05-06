@@ -36,7 +36,9 @@ function getHotelDetails_1()
 {
     global $conn,$getId;
 
-    $sql = "SELECT * FROM hotel WHERE idhotel=$getId";
+    $intgetId=(int)$getId;
+
+    $sql = "SELECT * FROM hotel WHERE hotelid=$intgetId";
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result)==1){
@@ -60,8 +62,9 @@ function getHotelDetails_2()
 
     $hotelRooms=array();
 
+    $intgetId=(int)$getId;
 
-    $sql = "SELECT * FROM hotel_availability WHERE hotel_id=$getId";
+    $sql = "SELECT * FROM hotel_availability WHERE hotel_id=$intgetId";
     $result = mysqli_query($conn, $sql);
 
 
