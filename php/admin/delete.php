@@ -1,26 +1,31 @@
 <?php
-    session_start();
+session_start();
 
-    include("../connection.php");
+include("../connection.php");
 
-    $hotelid=(int)$_GET['hotelid'];
-    $availavleid=(int)$_GET['tag'];
-
+if ($_SESSION["userID"]) {
+    $hotelid = (int) $_GET['hotelid'];
+    $availavleid = (int) $_GET['tag'];
     
-    $sql="delete from hotel_availability where idhotel_availability=".$availavleid;
     
-
-    $result=mysqli_query($conn,$sql);
-
-    if($result){
-        header('location: //views/admin/admin-panel.php ');
-
+    $sql = "delete from hotel where hotelid=".$hotelid;
+    
+    
+    $result = mysqli_query($conn, $sql);
+    
+    if ($result) {
+       echo "done";
+       
+    } else {
+    
+        print_r("errr" . mysqli_error($result));
     }
-    else{
 
-        print_r("errr".mysqli_error($result));
-    }
+   
 
+}else{
 
+echo "error";
 
-?>
+}
+

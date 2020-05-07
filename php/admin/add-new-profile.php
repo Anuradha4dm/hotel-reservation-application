@@ -9,13 +9,13 @@ if ($_SESSION['isLogin'] && isset($_POST['submit'])) {
     $price = $_POST['price'];
     $description = $_POST['description'];
     $quatity = $_POST['quatity'];
-    $quatity = $_POST['contact-number'];
-    $hotelid = $_POST['hotelid'];
-    $userId = $_SESSION['userID'];
+    $contact = $_POST['contact-number'];
+    $hotelid =(int)$_POST['hotelid'];
+    $userId = (int)$_SESSION['userID'];
 
 
 
-    $sql = "insert into hotel_availability(quantity,room_type,hotel_id,price,userid) values('$quatity','$roomType','$hotelid','$price','$userId')";
+    $sql = "insert into hotel_availability(quantity,room_type,hotel_id,price,userid,description,contactnumber) values('$quatity','$roomType',".$hotelid.",'$price',".$userId.",'$description','$contact')";
 
     $result = mysqli_query($conn, $sql);
 

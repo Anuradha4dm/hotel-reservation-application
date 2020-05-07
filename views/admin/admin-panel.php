@@ -49,7 +49,7 @@ include('../../php/connection.php');
                         if ($_SESSION['isLogin'] && $_SESSION['hotelUser']) {
 
                             echo '</form>';
-                            echo '<form action="/views/admin/admin-hotel-profile.php" method="GET">';
+                            echo '<form id="editHotel" action="/views/admin/edit-hotel-profile.php" method="GET">';
                             echo '<div class="card-body">';
                             echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                             echo '<button type="submit" name="submit-edit" class="submit btn btn-info">Edit Hotel Profile</button>';
@@ -60,21 +60,21 @@ include('../../php/connection.php');
                             echo '</form>';
                             echo '<form action="/views/admin/add-new-hotel-profile.php" method="GET">';
                             echo '<div class="card-body">';
-                            echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
+                            echo '<input type="hidden" id="hotelId" name="hotelId" value="' . $row['hotelid'] . '">';
                             echo '<button type="submit"  name="submit-add" class="submit btn btn-success">Add New Hotel Profile</button>';
                             echo '</div>';
 
                             echo '</form>';
-                           
-                            echo '<form action="/views/admin/admin-hotel-profile.php" method="GET">';
+
+                            echo '<form  id="deleteHotel">';
                             echo '<div class="card-body">';
                             echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
-                            echo '<button type="submit" name="submit-delete" class="submit btn btn-danger">Delete Hotel Profile</button>';
+                            echo '<button type="submit" name="submit-delete" id="deleteBtn" class="submit btn btn-danger">Delete Hotel Profile</button>';
                             echo '</div>';
                         }
 
 
-
+                        header("Refresh:0");
                         ?>
 
 
@@ -86,8 +86,39 @@ include('../../php/connection.php');
         </div>
 
 
-
     </main>
+
+    <script>
+        var xhr;
+
+        $("#deleteHotel").submit((event) => {
+
+            
+            event.preventDefault();
+            var hotelId=$("#hotelId").val();
+            
+            xhr = new XMLHttpRequest();
+
+            xhr.open("GET","/php/admin/delete.php?hotelid="+hotelId,true);
+
+            xhr.onload=()=>{
+
+                console.log(xhr.responseText);
+            }
+
+            xhr.send();
+        })
+
+        $("#editHotel").submit((event)=>{
+
+            
+
+
+        })
+
+    </script>
+
+
 </body>
 
 </html>

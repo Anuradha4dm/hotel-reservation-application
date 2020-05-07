@@ -3,7 +3,7 @@
 $servername='';
 $username='';
 $password='';
-$database='hotel';
+$database='';
 
 
 
