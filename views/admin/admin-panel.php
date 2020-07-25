@@ -49,7 +49,7 @@ include('../../php/connection.php');
                         if ($_SESSION['isLogin'] && $_SESSION['hotelUser']) {
 
                             echo '</form>';
-                            echo '<form id="editHotel" action="/views/admin/edit-hotel-profile.php" method="GET">';
+                            echo '<form id="editHotel" action="/views/admin/edit-hotel-data.php" method="GET">';
                             echo '<div class="card-body">';
                             echo '<input type="hidden" name="hotelId" value="' . $row['hotelid'] . '">';
                             echo '<button type="submit" name="submit-edit" class="submit btn btn-info">Edit Hotel Profile</button>';

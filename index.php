@@ -14,6 +14,8 @@ include('./php/connection.php');
     include('./views/includes/navigation.php');
     include('./php/get-hotel-handler.php');
 
+
+
     if ($msg=$_GET['msg']) {
        
         if($msg=="notlogin"){
@@ -21,6 +23,7 @@ include('./php/connection.php');
             echo '<h4>You Need To Log In</h4>';
             echo '</div>';
         }
+       
     }
 
     ?>

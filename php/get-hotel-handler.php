@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 $sql="SELECT * FROM hotel";
 
 $result=mysqli_query($conn,$sql);

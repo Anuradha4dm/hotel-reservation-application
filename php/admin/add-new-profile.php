@@ -15,14 +15,14 @@ if ($_SESSION['isLogin'] && isset($_POST['submit'])) {
 
 
 
-    $sql = "insert into hotel_availability(quantity,room_type,hotel_id,price,userid,description,contactnumber) values('$quatity','$roomType',".$hotelid.",'$price',".$userId.",'$description','$contact')";
+    $sql = "insert into hotel_availability(quantity,room_type,hotel_id,price,userid,description,contact_number) values('$quatity','$roomType',".$hotelid.",'$price',".$userId.",'$description','$contact')";
 
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
         print_r("insert");
     } else {
-        print_r("err".mysqli_error($conn));
+        print_r("error  ".mysqli_error($conn));
     }
 }
 else{

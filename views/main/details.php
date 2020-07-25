@@ -37,14 +37,14 @@ include('../../php/connection.php');
                   echo " <h5 class='card-title'>" . $detailsOfHotel['hotelName'] . "</h5>";
                echo "</div>";
                echo  "<div class='card-body'>";
-                   echo "<p class='card-text'>" . $detailsOfHotel['description'] . "</p>";
+                   echo "<p class='card-text'>" .$item->des . "</p>";
                echo "</div>";
                echo "<ul class='list-group list-group-flush'>";
                   echo  "<li class='list-group-item'>Room Type :" . $item->roomType . "</li>";
                   echo  "<li class='list-group-item'>Available :" . $item->quantity . " rooms</li>";
                   echo  "<li class='list-group-item'>Price :$" . $item->price . "</li>";
-                  echo  "<li class='list-group-item'>Contact No :0" . $detailsOfHotel['contactNumber'] . "</li>";
-                  echo  "<li class='list-group-item'>Contact No :0" . $detailsOfHotel['email'] . "</li>";
+                  echo  "<li class='list-group-item'>Contact No :0" .$item->contact . "</li>";
+                  echo  "<li class='list-group-item'>email  : " .$detailsOfHotel['email'] . "</li>";
 
 
                echo "</ul>";
@@ -55,8 +55,8 @@ include('../../php/connection.php');
 
                   }else{
 
-                     echo "<a href='' class='card-link'>EDIT</a>";
-                     echo "<a href='' class='card-link'>DELETE</a>";
+                     echo "<a href='/views/admin/edit-hotel-profile.php?hotelid=1&available=1' class='card-link'>EDIT</a>";
+                     echo "<a href='/index.php' class='card-link'>DELETE</a>";
                   }
                echo "</div>";
             echo "</div>";

@@ -12,40 +12,60 @@ include('../includes/head.php');
 
     <?php
 
+    if(isset($_GET)){
+
+
+        $hotelid=$_GET['hotelid'];
+        $available=$_GET['available'];
+       
+
+    }
+
     include('../includes/navigation.php');
     include('../../php/connection.php');
+    include('../../php/admin/fill-hotel-profile-data.php');
 
-    $hotelid=$_GET['hotelId'];
-
+   
+    
     ?>
 
     <div class="container  mb-5">
-        <form class="form-group" action="../../php/admin/post-edit-hotel-profile.php" method="POST" enctype="multipart/form-data">
-            <div>
-                <label for="emal">Email address</label>
-                <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
-            </div>
+        <form class="form-group" action="/php/admin/update-hotel-profile.php" method="POST">
+ 
 
-            <div>
-                <label for="hotelname">Hotel Name</label>
-                <input type="text" class="form-control" id="hotelname" name="name">
-            </div>
+            <div class="form-group">
+                <label for="type">Example select</label>
+                <select class="form-control" id="type" name="room-type" value="<?php echo $data['room_type']?>">
+                    <option value="single">Single</option>
+                    <option value="double">Double</option>
+                    <option value="triple">Triple</option>
+                    <option value="quad">Quad</option>
 
-            <div>
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="qty">number of rooms</label>
+                <input type="number" class="form-control-file" id="qty" value="<?php echo $data['quantity']?>" name="quatity">
             </div>
 
             <div class="form-group">
-                <label for="image">Select Image</label>
-                <input type="file" class="form-control-file" id="image" name="imageUrl">
+                <label for="price">Price Of Each</label>
+                <input type="number" class="form-control-file" id="price" name="price" value="<?php echo $data['price']?>" step="0.01">
             </div>
-        
-
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="number" class="form-control-file" id="contact" name="contact-number" value="<?php echo $data['contact_number']?>" >
+            </div>
 
             <div class="form-group">
-                <input type="hidden" name="hotelid" value="<?php echo $hotelid?>">
-                <button class="btn btn-success" type="submit" name="submit">submit</button>
+                <label for="exampleFormControlTextarea1">Some Comment</label>
+                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"><?php echo $data['description']?></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="hotelid" value="<?php echo $hotelid  ?>">
+                <input type="hidden" name="available" value="<?php echo $available  ?>">
+            <button class="btn btn-success" type="submit" name="submit">submit</button>
             </div>
         </form>
 
@@ -54,14 +74,8 @@ include('../includes/head.php');
 
     </div>
 
-    <script>
-
-        
 
 
-    </script>
-
-    
    
 
 </body>

@@ -19,10 +19,7 @@ if($conn){
 
 }else{
 
-    echo "<script>";
-    echo "console.log('connectin loss ......');";
-    echo "</script>";
-    
+    header("location: /views/main/errorpage.php?msg=hotel_not_found");
     die("connection faild ".mysqli_error($conn));
 
     

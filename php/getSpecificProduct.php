@@ -20,12 +20,17 @@ class hotelData{
     public $price;
     public $quantity;
     public $roomType;
+    public $contact;
+    public $des;
 
-    public function __construct($qty,$type,$prz)
+    public function __construct($qty,$type,$prz,$con,$des)
     {
         $this->quantity=$qty;
         $this->roomType=$type;
         $this->price=$prz;
+        $this->contact=$con;
+        $this->des=$des;
+
         
     }
 
@@ -72,14 +77,9 @@ function getHotelDetails_2()
 
         while($row=mysqli_fetch_assoc($result)) {
 
-            $h1=new hotelData($row['quantity'],$row['room_type'],$row['price']);
-
-            $q=$row['quantity'];
+            $h1=new hotelData($row['quantity'],$row['room_type'],$row['price'],$row['contact_number'],$row['description']);
             array_push($hotelRooms,$h1);  
-            echo "<script>";
-        echo "console.log($q);";
-        echo "</script>";
-
+            
         }
 
         
